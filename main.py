@@ -2,11 +2,18 @@ from flask import Flask, render_template, json, jsonify, request, redirect, url_
 
 from models import dbtool
 
+from models.dbtool import session
+# Userモデルの取得
+from models.meme import *
 
 app = Flask(__name__)
 
 @app.route('/')
 def index():
+
+    memes = session.query(Meme).all()
+    for meme in memes:
+        print(meme.description)
     return render_template('index.html')
 
 
@@ -18,6 +25,7 @@ def process_meme():
         'meme_image': meme['image_path']
     }
     return jsonify(ResultSet=json.dumps(return_json))
+
 
 
 if __name__ == '__main__':

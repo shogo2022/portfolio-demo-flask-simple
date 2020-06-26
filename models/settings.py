@@ -2,13 +2,15 @@ from sqlalchemy import *
 from sqlalchemy.orm import *
 from sqlalchemy.ext.declarative import declarative_base
 
+app = Flask(__name__)
+app.config.from_pyfile('config.py')
 
 # mysqlのDBの設定
 DATABASE = 'mysql://%s:%s@%s/%s?charset=utf8' % (
-    "meme_user",
-    "supersecretpassword",
-    "172.16.0.246",
-    "memedb",
+    app.config['DB_USER'],
+    app.config['DB_PASSWD'],
+    app.config['DB_IPADDRESS'],
+    app.config['DB_NAME'],
 )
 ENGINE = create_engine(
     DATABASE,

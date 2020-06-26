@@ -11,7 +11,7 @@ class Meme(Base):
     __tablename__ = 'item'
     id = Column('id', Integer, primary_key = True)
     description = Column('description', String(20))
-    image_path = Column('imaage_path', String(80))
+    image_path = Column('image_path', String(80))
 
 def main(args):
     Base.metadata.create_all(bind=ENGINE)

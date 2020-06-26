@@ -5,9 +5,10 @@ from sqlalchemy.orm import *
 from sqlalchemy.ext.declarative import declarative_base
 
 app = Flask(__name__)
-app.config.from_pyfile('config.py')
+app.config.from_pyfile('../config.py')
 
-# mysqlのDBの設定
+
+# mysql db connection
 DATABASE = 'mysql://%s:%s@%s/%s?charset=utf8' % (
     app.config['DB_USER'],
     app.config['DB_PASSWD'],
@@ -20,7 +21,7 @@ ENGINE = create_engine(
     echo=True
 )
 
-# Sessionの作成
+# Session
 session = scoped_session(
     sessionmaker(
         autocommit = False,
@@ -29,6 +30,6 @@ session = scoped_session(
     )
 )
 
-# modelで使用する
+# use in models
 Base = declarative_base()
 Base.query = session.query_property()

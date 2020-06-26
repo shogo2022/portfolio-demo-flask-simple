@@ -8,6 +8,7 @@ def get_test_meme():
     if len(memes) <= 0:
         return None
     meme = random.choice(memes)
+    print(meme)
     return meme
 
 

@@ -1,8 +1,8 @@
 import sys
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import Column, Integer, String, Float, DateTime
-from models.dbtool import Base
-from models.dbtool import ENGINE
+from models.settings import Base
+from models.settings import ENGINE
 
 class Meme(Base):
     """

@@ -1,21 +1,19 @@
 from flask import Flask, render_template, json, jsonify, request, redirect, url_for
 
-from models import dbtool
-
-from models.dbtool import session
+import logic
+from models.settings import session
 
 
 app = Flask(__name__)
 
 @app.route('/')
 def index():
-
     return render_template('index.html')
 
 
 @app.route('/meme', methods=['POST'])
 def process_meme():
-    meme = dbtool.get_test_meme()
+    meme = logic.get_test_meme()
     return_json = {
         'meme_desc': meme['description'],
         'meme_image': meme['image_path']
@@ -25,5 +23,5 @@ def process_meme():
 
 
 if __name__ == '__main__':
-    app.debug = True # デバッグモード有効化
-    app.run(host='0.0.0.0') # どこからでもアクセス可能に
+    app.debug = True
+    app.run(host='0.0.0.0', port=80)

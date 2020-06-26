@@ -73,6 +73,9 @@ from sqlalchemy.ext.declarative import declarative_base
 
 import random
 
+# Userモデルの取得
+from models.meme import *
+
 def get_test_meme():
     memes = session.query(Meme).all()
     if len(memes) <= 0:

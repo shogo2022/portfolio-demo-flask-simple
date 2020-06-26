@@ -3,8 +3,7 @@ from flask import Flask, render_template, json, jsonify, request, redirect, url_
 from models import dbtool
 
 from models.dbtool import session
-# Userモデルの取得
-from models.meme import *
+
 
 app = Flask(__name__)
 

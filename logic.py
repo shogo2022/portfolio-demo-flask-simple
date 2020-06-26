@@ -1,6 +1,7 @@
 import random
 
 from models.meme import *
+from models.settings imort session
 
 def get_test_meme():
     memes = session.query(Meme).all()

@@ -11,9 +11,6 @@ app = Flask(__name__)
 @app.route('/')
 def index():
 
-    memes = session.query(Meme).all()
-    for meme in memes:
-        print(meme.description)
     return render_template('index.html')
 
 

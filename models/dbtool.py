@@ -67,18 +67,18 @@ meme_list = [
     }
 ]
 
-import random
-
-def get_test_meme():
-    if random.random() > 0.5:
-        return None
-    meme = random.choice(meme_list)
-    return meme
-
-
 from sqlalchemy import *
 from sqlalchemy.orm import *
 from sqlalchemy.ext.declarative import declarative_base
+
+import random
+
+def get_test_meme():
+    memes = session.query(Meme).all()
+    if len(memes) <= 0:
+        return None
+    meme = random.choice(memes)
+    return meme
 
 # mysqlのDBの設定
 DATABASE = 'mysql://%s:%s@%s/%s?charset=utf8' % (

@@ -15,8 +15,8 @@ def index():
 def process_meme():
     meme = logic.get_test_meme()
     return_json = {
-        'meme_desc': meme['description'],
-        'meme_image': meme['image_path']
+        'meme_desc': meme.description,
+        'meme_image': meme.image_path
     }
     return jsonify(ResultSet=json.dumps(return_json))
 
